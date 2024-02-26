@@ -1,0 +1,51 @@
+.poster {
+    max-width: 300px;
+    width: auto;
+    height: auto;
+  }
+  
+  .company-img {
+      max-width: 150px;
+      width: auto;
+      height: auto;
+  }
+  
+  .poster-bg {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: linear-gradient(
+        to right,
+        rgb(23, 23, 24) 150px,
+        rgba(20, 20, 22, 0.84) 100%
+      );
+      opacity: 0.9;
+      z-index: 0;
+    }
+  }
+  
+  .poster-side {
+      z-index: 1;
+  }
+  
+  .movie-info {
+    color: white;
+    & .movie-title {
+      font-size: 32px;
+      font-weight: bold;
+    }
+  }
+  
+  .trailer-btn {
+    z-index: 1;
+    position: relative;
+  }
+  

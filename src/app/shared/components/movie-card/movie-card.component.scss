@@ -1,0 +1,26 @@
+.more-button {
+    position: absolute;
+    top: 8px;
+    right: 13px;
+  }
+  
+  .dashboard-card-content {
+    text-align: center;
+  }
+  
+  .icon-btn {
+    margin-right: 5px !important;
+  }
+  
+  .poster {
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .movie-card {
+    max-width: 530px;
+    transition: transform .2s ease-out;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.04);
+    }
+  }

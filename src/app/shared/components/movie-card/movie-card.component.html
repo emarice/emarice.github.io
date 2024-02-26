@@ -1,0 +1,24 @@
+@if (info) {
+<mat-card class="p-0 movie-card h-100" (click)="clicked.emit()">
+    <mat-card-content class="dashboard-card-content">
+        @if(info.poster_path){
+            <img [src]="'https://image.tmdb.org/t/p/w500'+info.poster_path" class="w-100 poster img-fluid"/>   
+        }
+    </mat-card-content>
+    <mat-card-header>
+        <mat-card-title class="mb-3">
+            {{info.title}}
+            <!-- <button mat-mini-fab color="secondary" class="more-button" [matMenuTriggerFor]="menu"
+                aria-label="Toggle menu" (click)="$event.stopPropagation()">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item><mat-icon class="icon-btn" matPrefix>bookmark_border</mat-icon>Aggiungi alla
+                    lista</button>
+                <button mat-menu-item><mat-icon class="icon-btn" matPrefix>star_border</mat-icon>Aggiungi ai
+                    preferiti</button>
+            </mat-menu> -->
+        </mat-card-title>
+    </mat-card-header>
+</mat-card>
+}
