@@ -9,13 +9,13 @@ const PROFILE_KEY = 'UserProfile';
   providedIn: 'root',
 })
 export class UserService {
-  private favorites = signal<Movie[]>(this.loadFromStorage(FAV_KEY));
-  private seen = signal<Movie[]>(this.loadFromStorage(SEEN_KEY));
-  profile = signal<UserProfile>(this.loadFromStorage(PROFILE_KEY) ?? {
+  private favorites = signal<Movie[]>(this.loadFromStorage(FAV_KEY, []));
+  private seen = signal<Movie[]>(this.loadFromStorage(SEEN_KEY, []));
+  profile = signal<UserProfile>(this.loadFromStorage(PROFILE_KEY, {
     name: 'Utente Test',
     bio: 'Appassionato di cinema',
     avatarUrl: '',
-  });
+  }));
 
   get userFavorites() {
     return this.favorites.asReadonly();
@@ -58,9 +58,9 @@ export class UserService {
     this.saveToStorage(PROFILE_KEY, updated);
   }
 
-  private loadFromStorage(key: string) {
+  private loadFromStorage<T>(key: string, fallback: T) {
     const data = localStorage.getItem(key);
-    return data ? JSON.parse(data) : null;
+    return data ? JSON.parse(data) : fallback;
   }
 
   private saveToStorage(key: string, value: unknown) {
