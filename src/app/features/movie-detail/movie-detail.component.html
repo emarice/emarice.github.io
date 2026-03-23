@@ -1,0 +1,57 @@
+<div class="hero" [style.backgroundImage]="'url(https://image.tmdb.org/t/p/original'+movie.backdrop_path+')'">
+    <button mat-icon-button class="back-btn" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div class="overlay">
+        <div class="detail-wrapper">
+            <img class="poster" [src]="'https://image.tmdb.org/t/p/w500'+movie.poster_path">
+            <div class="info">
+                <h1>{{movie.title}}</h1>
+                <p class="tagline">{{movie.tagline}}</p>
+                <div class="chips">
+
+                    <mat-chip>{{movie.release_date | date}}</mat-chip>
+                    <mat-chip>{{movie.runtime}} min</mat-chip>
+                    <mat-chip color="accent">
+                        ⭐ {{movie.vote_average}}
+                    </mat-chip>
+
+                    @for(g of movie.genres; track g.id) {
+                    <mat-chip>{{g.name}}</mat-chip>
+                    }
+
+                </div>
+
+                <p class="overview">
+                    {{movie.overview}}
+                </p>
+
+                <div class="buttons">
+                    <button mat-raised-button color="accent" class="me-1" (click)="openTrailer()">
+                        ▶ Guarda trailer
+                    </button>
+                    <button mat-stroked-button color="primary" class="me-1" (click)="isSeen ? userService.removeSeen(movie.id) : userService.addSeen(movie)">
+                        <mat-icon>{{isSeen ? "visibility_off" : "check"}}</mat-icon>
+                        {{ isSeen ? "Rimuovi dai film visti" : "Segna come visto"}}</button>
+                    <button mat-stroked-button color="secondary"
+                        (click)="isFavorite ? userService.removeFavorite(movie.id) : userService.addFavorite(movie)">
+                        <mat-icon>{{isFavorite ? "star" : "star_border"}}</mat-icon> {{isFavorite ? "Rimuovi dai" :
+                        "Aggiungi ai"}} preferiti</button>
+                </div>
+
+                <div class="cast-wrapper">
+
+                    <h3>Cast principale</h3>
+                    <div class="cast">
+                        @for(actor of movie.credits.cast.slice(0,5); track actor.id) {
+                        <div class="actor">
+                            <img [src]="'https://image.tmdb.org/t/p/w185'+actor.profile_path">
+                            <span>{{actor.name}}</span>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

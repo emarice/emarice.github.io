@@ -1,0 +1,16 @@
+
+.spacer {
+    flex: 1
+}
+
+.toolbar {
+
+  background: var(--mat-app-surface);
+  color: var(--mat-app-on-surface);
+
+  backdrop-filter: blur(8px);
+}
+
+.pointer {
+  cursor: pointer;
+}

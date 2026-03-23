@@ -1,0 +1,85 @@
+@use '@angular/material' as mat;
+
+/* inizializza Material */
+@include mat.core();
+
+/* ---------- LIGHT THEME (Azure/Blue style) ---------- */
+
+$light-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$blue-palette,
+    tertiary: mat.$azure-palette,
+  ),
+));
+
+/* ---------- DARK THEME ---------- */
+
+$dark-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$blue-palette,
+    tertiary: mat.$azure-palette,
+  ),
+));
+
+/* ---------- APPLY THEMES ---------- */
+
+.light-theme {
+
+  @include mat.all-component-themes($light-theme);
+
+  background-color: var(--mat-app-background-color);
+  color: var(--mat-app-text-color);
+}
+
+.dark-theme {
+
+  @include mat.all-component-themes($dark-theme);
+
+  background-color: var(--mat-app-background-color);
+  color: var(--mat-app-text-color);
+}
+
+/* ---------- GLOBAL ---------- */
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: Roboto, sans-serif;
+}
+
+// utility spacing
+.page {
+  padding: 24px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.ms-{
+  &1 {
+    margin-left: 0.5rem;
+  }
+
+  &2 {
+    margin-left: 1rem;
+  }
+
+  &3 {
+    margin-left: 1.5rem;
+  }
+}
+
+.me-{
+  &1 {
+    margin-right: 0.5rem;
+  }
+
+  &2 {
+    margin-right: 1rem;
+  }
+
+  &3 {
+    margin-right: 1.5rem;
+  }
+}

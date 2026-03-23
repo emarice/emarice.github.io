@@ -1,0 +1,25 @@
+<div class="page">
+    <h2>🔥 Film popolari</h2>
+    <div class="grid">
+        @for(movie of movies.movies(); track movie.id) {
+        <mat-card [routerLink]="['/movie', movie.id]">
+            <div class="poster-wrapper">
+                <img mat-card-image [src]="'https://image.tmdb.org/t/p/w500'+movie.poster_path">
+                <div class="poster-badges">
+                    @if(userService.isSeen(movie.id)) {
+                        <span class="badge badge-seen" matTooltip="Visto" matTooltipPosition="left">
+                            <mat-icon>visibility</mat-icon>
+                        </span>
+                    }
+                    @if(userService.isFavorite(movie.id)) {
+                        <span class="badge badge-favorite" matTooltip="Preferito" matTooltipPosition="left">
+                            <mat-icon>star</mat-icon>
+                        </span>
+                    }
+                </div>
+            </div>
+            <mat-card-title>{{movie.title}}</mat-card-title>
+        </mat-card>
+        }
+    </div>
+</div>

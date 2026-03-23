@@ -1,0 +1,29 @@
+@if(!hideToolbar()){
+  <mat-toolbar class="toolbar">
+    <span routerLink="/" class="pointer">Movie Database</span>
+  
+    <span class="spacer"></span>
+    
+    <div class="toolbar-actions">
+
+      <button mat-icon-button (click)="theme.toggle()">
+        <mat-icon>
+          {{ theme.darkMode() ? 'dark_mode' : 'light_mode' }}
+        </mat-icon>
+      </button>
+
+      <button mat-icon-button routerLink="/profile">
+        <mat-icon>
+          account_circle
+        </mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="logout()">
+        <mat-icon>
+          logout
+        </mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+}
+<router-outlet></router-outlet>
