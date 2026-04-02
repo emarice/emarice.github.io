@@ -1,0 +1,20 @@
+@if (movie) {
+    <mat-card (click)="emitClickEvent()">
+        <div class="poster-wrapper">
+            <img mat-card-image [src]="'https://image.tmdb.org/t/p/w500'+movie.poster_path">
+            <div class="poster-badges">
+                @if(userService.isSeen(movie.id)) {
+                <span class="badge badge-seen" matTooltip="Visto" matTooltipPosition="left">
+                    <mat-icon>visibility</mat-icon>
+                </span>
+                }
+                @if(userService.isFavorite(movie.id)) {
+                <span class="badge badge-favorite" matTooltip="Preferito" matTooltipPosition="left">
+                    <mat-icon>star</mat-icon>
+                </span>
+                }
+            </div>
+        </div>
+        <mat-card-title>{{movie.title}}</mat-card-title>
+    </mat-card>
+}
